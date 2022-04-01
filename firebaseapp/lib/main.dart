@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebaseapp/realtime_db.dart';
@@ -15,7 +16,13 @@ Future<void> main() async {
         messagingSenderId: "310248865936",
         appId: "1:310248865936:web:5f2200a7f60f0fec235815"),
   );
-  runApp(const MaterialApp(
-    home: realtime_db(),
-  ));
+  runApp(
+    DevicePreview(
+      enabled: true,
+      builder: (context) => const MaterialApp(
+        useInheritedMediaQuery: true,
+        home: realtime_db(),
+      ),
+    ),
+  );
 }
